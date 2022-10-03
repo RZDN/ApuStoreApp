@@ -32,6 +32,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    print(MediaQuery.of(context).size.flipped);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(top: 40.0),
@@ -41,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
               alignment: Alignment.topRight,
               child: Image.asset(
                 "assets/images/undraw_shopping_app_flsj.png",
-                scale: 4,
+                scale: 5,
               ),
             ),
             Container(
@@ -50,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: const Text(
                   "Hola¡  \nBienvenido",
                   style: TextStyle(
-                    fontSize: 64.0,
+                    fontSize: 50.0,
                     fontWeight: FontWeight.w700,
                   ),
                 )),
@@ -60,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text(
                 "Compra lo que necesites y recoge desde la comodidad de tu hogar.",
                 style: TextStyle(
-                  fontSize: 30.0,
+                  fontSize: 28.0,
                   fontWeight: FontWeight.w400,
                 ),
               ),
