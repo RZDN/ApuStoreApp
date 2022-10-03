@@ -30,44 +30,52 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool sizeOfScreen() {
+    double heightScreem = MediaQuery.of(context).size.height;
+
+    if (heightScreem < 700) {
+      return true;
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size.flipped);
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 40.0),
+        padding: sizeOfScreen()
+            ? const EdgeInsets.only(top: 5.0)
+            : const EdgeInsets.only(top: 40.0),
         child: Column(
           children: [
             Container(
               alignment: Alignment.topRight,
               child: Image.asset(
                 "assets/images/undraw_shopping_app_flsj.png",
-                scale: 5,
+                scale: sizeOfScreen() ? 6 : 5,
               ),
             ),
             Container(
                 padding: const EdgeInsets.only(left: 10.0),
                 alignment: Alignment.bottomLeft,
-                child: const Text(
+                child: Text(
                   "Hola¡  \nBienvenido",
                   style: TextStyle(
-                    fontSize: 50.0,
+                    fontSize: sizeOfScreen() ? 35.0 : 64.0,
                     fontWeight: FontWeight.w700,
                   ),
                 )),
             Container(
-              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+              padding:
+                  const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 40.0),
               alignment: Alignment.bottomLeft,
-              child: const Text(
+              child: Text(
                 "Compra lo que necesites y recoge desde la comodidad de tu hogar.",
                 style: TextStyle(
-                  fontSize: 28.0,
+                  fontSize: sizeOfScreen() ? 22.0 : 32.0,
                   fontWeight: FontWeight.w400,
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 50.0,
             ),
             InkWell(
               onTap: () {
@@ -79,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: Container(
-                  height: 75.0,
+                  height: sizeOfScreen() ? 65.0 : 75.0,
                   decoration: BoxDecoration(
                       color: const Color(0xFFFEAE01),
                       borderRadius: BorderRadius.circular(25.0),
@@ -105,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: Container(
-                height: 75.0,
+                height: sizeOfScreen() ? 65.0 : 75.0,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25.0),
                     border: Border.all(

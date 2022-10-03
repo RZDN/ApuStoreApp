@@ -8,8 +8,18 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  bool sizeOfScreen() {
+    double heightScreem = MediaQuery.of(context).size.height;
+
+    if (heightScreem < 700) {
+      return true;
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
+    print(MediaQuery.of(context).size.height);
     return Scaffold(
       backgroundColor: Colors.white.withOpacity(0.9),
       body: GestureDetector(
@@ -18,31 +28,36 @@ class _RegisterPageState extends State<RegisterPage> {
         },
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(top: 50.0),
+            padding: sizeOfScreen()
+                ? const EdgeInsets.only(top: 5.0)
+                : const EdgeInsets.only(top: 40.0),
             child: Column(
               children: [
                 Center(
                   child: Image.asset(
                     "assets/images/undraw_Starry_window_re_0v82.png",
-                    scale: 5,
+                    scale: sizeOfScreen() ? 8 : 5,
                   ),
                 ),
-                const Center(
+                Center(
                   child: Text(
                     "Regístrate",
                     style: TextStyle(
-                      fontSize: 32.0,
+                      fontSize: sizeOfScreen() ? 24.0 : 32.0,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.only(left: 45.0, top: 30.0),
+                  padding: EdgeInsets.only(
+                    left: 45.0,
+                    top: sizeOfScreen() ? 5.0 : 15.0,
+                  ),
                   alignment: Alignment.bottomLeft,
-                  child: const Text(
+                  child: Text(
                     "Nombres",
                     style: TextStyle(
-                      fontSize: 18.0,
+                      fontSize: sizeOfScreen() ? 12.0 : 18.0,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -52,7 +67,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: TextFormField(
                     keyboardType: TextInputType.name,
                     decoration: InputDecoration(
+                      isDense: true,
                       filled: true,
+                      contentPadding: sizeOfScreen()
+                          ? const EdgeInsets.all(14.0)
+                          : const EdgeInsets.all(0.0),
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(color: Colors.white),
@@ -67,10 +86,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 Container(
                   padding: const EdgeInsets.only(left: 45.0, top: 10.0),
                   alignment: Alignment.bottomLeft,
-                  child: const Text(
+                  child: Text(
                     "E-mail",
                     style: TextStyle(
-                      fontSize: 18.0,
+                      fontSize: sizeOfScreen() ? 12.0 : 18.0,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -82,7 +101,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
+                      isDense: true,
                       filled: true,
+                      contentPadding: sizeOfScreen()
+                          ? const EdgeInsets.all(14.0)
+                          : const EdgeInsets.all(0.0),
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(color: Colors.white),
@@ -97,10 +120,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 Container(
                   padding: const EdgeInsets.only(left: 45.0, top: 10.0),
                   alignment: Alignment.bottomLeft,
-                  child: const Text(
+                  child: Text(
                     "Contraseña",
                     style: TextStyle(
-                      fontSize: 18.0,
+                      fontSize: sizeOfScreen() ? 12.0 : 18.0,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -108,9 +131,14 @@ class _RegisterPageState extends State<RegisterPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: TextFormField(
-                    keyboardType: TextInputType.emailAddress,
+                    obscureText: true,
+                    keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       filled: true,
+                      isDense: true,
+                      contentPadding: sizeOfScreen()
+                          ? const EdgeInsets.all(14.0)
+                          : const EdgeInsets.all(0.0),
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(color: Colors.white),
@@ -123,23 +151,28 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 80.0),
+                  padding: EdgeInsets.only(
+                      top: sizeOfScreen() ? 15.0 : 30.0,
+                      bottom: sizeOfScreen() ? 5.0 : 10.0),
                   child: InkWell(
                     onTap: () {},
                     child: Container(
-                      height: 70.0,
+                      height: sizeOfScreen() ? 60.0 : 70.0,
+                      width: sizeOfScreen() ? 200.0 : 240.0,
                       decoration: BoxDecoration(
                           color: const Color(0xFFFEAE01),
-                          borderRadius: BorderRadius.circular(25.0),
+                          borderRadius: BorderRadius.circular(
+                            25.0,
+                          ),
                           border: Border.all(
                             color: Colors.black,
                             width: 2.0,
                           )),
-                      child: const Center(
+                      child: Center(
                         child: Text(
                           "Crear Cuenta",
                           style: TextStyle(
-                            fontSize: 30.0,
+                            fontSize: sizeOfScreen() ? 24.0 : 30.0,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -147,31 +180,63 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                 ),
-                const Center(
+                Center(
                   child: Text(
                     "Continua con",
                     style: TextStyle(
-                      fontSize: 16.0,
+                      fontSize: sizeOfScreen() ? 12.0 : 16.0,
                       fontWeight: FontWeight.w300,
                       color: Colors.black54,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 120.0, vertical: 25.0),
+                  padding: EdgeInsets.only(
+                    top: sizeOfScreen() ? 10.0 : 15.0,
+                  ),
                   child: Container(
-                    height: 70,
+                    height: sizeOfScreen() ? 40.0 : 50.0,
+                    width: sizeOfScreen() ? 100.0 : 120.0,
                     decoration: BoxDecoration(
-                      color: Colors.black26,
-                      borderRadius: BorderRadius.circular(25.0),
+                      color: Colors.black12,
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset("assets/images/google.png"),
+                        const Text("  Google"),
+                      ],
                     ),
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 30.0, bottom: 25.0),
+                  padding: const EdgeInsets.only(
+                      left: 30.0, bottom: 25.0, top: 15.0),
                   alignment: Alignment.centerLeft,
-                  child: Text("Ya tengo una cuenta."),
+                  child: Row(
+                    children: [
+                      const Text(
+                        "Ya tengo una cuenta. ",
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: (() {}),
+                        child: const Text(
+                          " Iniciar Sesion",
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            color: Colors.red,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),
